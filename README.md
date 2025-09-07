@@ -65,8 +65,8 @@ Zapret UI — это десктопное приложение на базе **E
 
 Список блокирующихся адресов для обхода можно расширить, добавляя их в:
 
-* [`list-general.txt`](./lists/list-general.txt) для доменов (поддомены автоматически учитываются)
-* [`ipset-all.txt`](./lists/ipset-all.txt) для IP и подсетей
+* [`list-general.txt`](./bat_scripts/ps1/lists/list-general.txt) для доменов (поддомены автоматически учитываются)
+* [`ipset-all.txt`](./bat_scripts/ps1/lists/ipset-all.txt) для IP и подсетей
 
 ---
 

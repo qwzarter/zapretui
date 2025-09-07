@@ -293,7 +293,7 @@ const App = () => {
 								</div>
 								<div className="version-text">
 								  <a 
-									href="https://github_ZapretUI" 
+									href="https://github.com/qwzarter/zapretui/" 
 									target="_blank" 
 									rel="noopener noreferrer" 
 									className="text-blue-500 hover:underline"

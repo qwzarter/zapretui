@@ -81,7 +81,7 @@ const useAppLogic = () => {
 		} catch (error) {
 			console.error("Failed to load run in tray setting from localStorage", error);
 		}
-		return false;
+		return true;
 	});
 
 	// 3. Ссылки

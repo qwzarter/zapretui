@@ -9,15 +9,22 @@
 </div>
 
 ---
-<div align="center">
-  <img src="https://lh3.google.com/u/1/d/1yUQQcHsNBCVR49xPRikreNJEMM_qBX0_=w1920-h919-iv1?auditContext=forDisplay" height="28" alt="Тёмная тема 1" />
-  <img src="https://lh3.google.com/u/1/d/1CJY02cnGMBzpk4e1H6dl0Wj8RfeWBdZ7=w1920-h919-iv1?auditContext=prefetch" height="28" alt="Тёмная тема 2" />
-</div>
 
 <div align="center">
-  <img src="https://lh3.google.com/u/1/d/1ajpo-1_ZQwJRXlS53oG9xnd0jn-FcQyp=w962-h919-iv1?auditContext=prefetch" height="28" alt="Светлая тема 1" />
-  <img src="https://lh3.google.com/u/1/d/1TtHLhlL123yIkgIQ-QA6xcAhoPQCAfqG=w962-h919-iv1?auditContext=prefetch" height="28" alt="Светлая тема 2" />
+  <img src="./Images/1.png" height="450" alt="Тёмная тема 1" />
+  <img src="./Images/2.png" height="450" alt="Тёмная тема 2" />
 </div>
+
+---
+
+<details>
+  <summary>Светлая Тема</summary>
+  <div align="center">
+    <img src="./Images/3.png" height="400" alt="Светлая тема 1" />
+    <img src="./Images/4.png" height="400" alt="Светлая тема 2" />
+  </div>
+</details>
+
 ---
 
 > [!CAUTION]

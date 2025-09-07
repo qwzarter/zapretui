@@ -25,7 +25,6 @@ let trayMenuData = {
 
 function createShortcut() {
     const appExecutablePath = app.getPath('exe');
-    // Добавляем флаг --from-startup для запуска из папки автозагрузки
     const vbsContent = `
 Set WshShell = WScript.CreateObject("WScript.Shell")
 WshShell.Run Chr(34) & "${appExecutablePath}" & Chr(34) & " --from-startup", 0
@@ -43,7 +42,8 @@ function deleteShortcut() {
 }
 
 function createWindow() {
-    const shouldStartInTray = settings.get('shouldStartInTray', true); 
+    const shouldStartInTray = settings.get('shouldStartInTray', true);
+    console.log(`[Main Process]: Настройка 'shouldStartInTray' имеет статус: ${shouldStartInTray}`);
     const isLaunchedFromStartup = process.argv.includes('--from-startup');
     const shouldStartHidden = isLaunchedFromStartup && shouldStartInTray;
 
@@ -156,6 +156,15 @@ app.whenReady().then(() => {
         }
     };
     setInitialTrayMenu();
+
+    ipcMain.handle('get-settings', (event) => {
+        const shouldStartInTray = settings.get('shouldStartInTray', true);
+        const isRunAtStartupEnabled = fs.existsSync(vbsShortcutPath);
+        return {
+            shouldStartInTray: shouldStartInTray,
+            isRunAtStartupEnabled: isRunAtStartupEnabled
+        };
+    });
 
     ipcMain.on('update-should-start-in-tray', (event, value) => {
         settings.set('shouldStartInTray', value);

@@ -22,17 +22,7 @@ const useAppLogic = () => {
 	];
 
 	// 2. Состояния
-	const [shouldStartInTray, setShouldStartInTray] = useState(() => {
-		try {
-			const savedSetting = localStorage.getItem('shouldStartInTray');
-			if (savedSetting !== null) {
-				return JSON.parse(savedSetting);
-			}
-		} catch (error) {
-			console.error("Failed to load 'shouldStartInTray' setting from localStorage", error);
-		}
-		return true;
-	});
+	const [shouldStartInTray, setShouldStartInTray] = useState(null);
 	const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -104,7 +94,13 @@ const useAppLogic = () => {
 	// 5. Функции-Обработчики
 	
 	const handleToggleStartInTray = useCallback(() => {
-		setShouldStartInTray(prev => !prev);
+		setShouldStartInTray(prev => {
+            const newValue = !prev;
+            if (window.electronAPI) {
+                window.electronAPI.updateShouldStartInTray(newValue);
+            }
+            return newValue;
+        });
 	}, []);
 	
 	const handleAutoConnectToggle = useCallback(() => {
@@ -357,6 +353,22 @@ const useAppLogic = () => {
 	};
 
 // Эффекты
+
+	useEffect(() => {
+        const fetchInitialSettings = async () => {
+            if (window.electronAPI && window.electronAPI.getSettings) {
+                try {
+                    const settings = await window.electronAPI.getSettings();
+                    setShouldStartInTray(settings.shouldStartInTray);
+                    console.log(`[App]: Начальная настройка 'shouldStartInTray' загружена: ${settings.shouldStartInTray}`);
+                } catch (error) {
+                    console.error("[App]: Не удалось загрузить начальные настройки из Store", error);
+                }
+            }
+        };
+
+        fetchInitialSettings();
+	}, []); 
 	
 	useEffect(() => {
 		try {

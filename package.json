@@ -39,26 +39,19 @@
       "bat_scripts/**/*",
       "!**/node_modules/fsevents"
     ],
-    "win": {
-      "target": [
-        {
-          "target": "nsis",
-          "arch": [
-            "x64",
-            "ia32"
-          ]
-        },
-        {
-          "target": "zip",
-          "arch": [
-            "x64",
-            "ia32"
-          ]
-        }
-      ],
-      "icon": "assets/icon.ico",
-	  "requestedExecutionLevel": "requireAdministrator"
-    },
+	"win": {
+		"target": [
+		  {
+			"target": "nsis",
+			"arch": [
+			  "x64",
+			  "ia32"
+			]
+		  }
+		],
+		"icon": "assets/icon.ico",
+		"requestedExecutionLevel": "requireAdministrator"
+	},
     "nsis": {
       "oneClick": false,
       "perMachine": true,

@@ -1,6 +1,8 @@
-# Electron and Node.js
+# Node.js and Electron
 /node_modules
-npm-debug.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 .DS_Store
 *.swp
 *.bak
@@ -20,3 +22,32 @@ yarn-debug.log*
 yarn-error.log*
 .idea/
 .log
+*~
+.eslintcache
+
+# Electron-specific files to ignore
+Code Cache
+DawnCache
+DawnGraphiteCache
+DawnWebGPUCache
+GPUCache
+Local Storage/
+Session Storage
+Shared Dictionary
+SharedStorage
+Network
+!prevMode)
+(
+{
+
+# Temporary files with unusual names
+0.3
+0.5
+DIPS
+Local State
+Preferences
+s.id
+setTimeout(Math.random()
+setTimeout(SPINNER_DURATION_MS
+clearInterval(intervalId)
+setSelectedStrategy(e.target.value)}

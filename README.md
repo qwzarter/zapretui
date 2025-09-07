@@ -10,13 +10,13 @@
 
 ---
 <div align="center">
-  <img src="./images/1.png" height="28" alt="Тёмная тема 1" />
-  <img src="./images/2.png" height="28" alt="Тёмная тема 2" />
+  <img src="./Images/1.png" height="28" alt="Тёмная тема 1" />
+  <img src="./Images/2.png" height="28" alt="Тёмная тема 2" />
 </div>
 
 <div align="center">
-  <img src="./images/3.png" height="28" alt="Светлая тема 1" />
-  <img src="./images/4.png" height="28" alt="Светлая тема 2" />
+  <img src="./Images/3.png" height="28" alt="Светлая тема 1" />
+  <img src="./Images/4.png" height="28" alt="Светлая тема 2" />
 </div>
 ---
 

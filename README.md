@@ -24,6 +24,7 @@
     <img src="./Images/4.png" height="400" alt="Светлая тема 2" />
   </div>
 </details>
+
 ---
 
 > [!CAUTION]

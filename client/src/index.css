@@ -1,0 +1,30 @@
+/* client/src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Добавьте сюда любые глобальные стили, которые вы хотите применить.
+   Например, для шрифта или сброса базовых стилей. */
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Предотвращает появление полос прокрутки */
+  user-select: none; /* Отключает выделение текста */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+body {
+  font-family: 'Inter', sans-serif; /* Используем шрифт Inter */
+  /* Убедитесь, что body не имеет прозрачного фона, если это не требуется.
+     Фон будет задаваться классами Tailwind в App.js. */
+  background-color: transparent;
+}
+
+/* Дополнительные стили для темной/светлой темы, если они не обрабатываются Tailwind */
+.dark {
+  /* Здесь могут быть дополнительные стили для темной темы, если они не покрываются Tailwind */
+}

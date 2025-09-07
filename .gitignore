@@ -1,0 +1,25 @@
+Зависимости
+/node_modules
+/package-lock.json
+
+Сборки
+/dist
+/build
+
+Временные файлы и кэш
+.DS_Store
+Thumbs.db
+npm-debug.log*
+.npmrc
+.vscode/
+blob_storage
+Cache
+Code Cache
+DawnGraphiteCache
+DawnWebGPUCache
+GPUCache
+Local Storage
+Network
+Session Storage
+Shared Dictionary
+SharedStorage

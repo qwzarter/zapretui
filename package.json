@@ -1,0 +1,91 @@
+{
+  "name": "zapretui",
+  "version": "1.2.0",
+  "description": "Desktop UI for Zapret",
+  "main": "electron.js",
+  "scripts": {
+    "start-react": "npm --prefix client start",
+    "react-build": "npm --prefix client run build",
+    "start-electron": "node node_modules/electron/cli.js .",
+    "start": "npm run react-build && npm run start-electron",
+    "electron-build": "electron-builder",
+    "postinstall": "electron-builder install-app-deps",
+    "build": "npm run react-build && electron-builder"
+  },
+  "build": {
+    "appId": "com.qwzarter.zapretui",
+    "productName": "Zapret UI",
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets"
+    },
+    "files": [
+      "electron.js",
+      "preload.js",
+      {
+        "from": "./client/build",
+        "to": "./",
+        "filter": ["**/*"]
+      },
+      "package.json",
+      "bat_scripts/**/*",
+      "bin/**/*",
+      "lists/**/*",
+      "assets/icon.ico",
+      "!**/node_modules/fsevents"
+    ],
+    "asarUnpack": [
+      "**/*.node",
+      "bat_scripts/**/*",
+      "!**/node_modules/fsevents"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
+      "icon": "assets/icon.ico",
+	  "requestedExecutionLevel": "requireAdministrator"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "deleteAppDataOnUninstall": false,
+	  "runAfterFinish": true
+    },
+    "nodeGypRebuild": false,
+    "buildDependenciesFromSource": false,
+    "extraMetadata": {
+      "main": "electron.js"
+    }
+  },
+  "keywords": [],
+  "author": "qwzarter",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "electron": "^37.2.0",
+    "electron-builder": "^26.0.12"
+  },
+  "dependencies": {
+    "react-scripts": "^5.0.1"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.3.2"
+  }
+}

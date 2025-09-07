@@ -1,4 +1,4 @@
-# <div align="center"><img src="https://cdn-icons-png.flaticon.com/128/5968/5968756.png" height="28" alt="Discord Icon" /> Zapret UI <img src="https://cdn-icons-png.flaticon.com/128/1384/1384060.png" height="28" alt="YouTube Icon" /></div>
+# <div align="center"><img src="https://cdn-icons-png.flaticon.com/128/5968/5968756.png" height="28" alt="Discord Icon" /> <span style="color: blue;">Zapret UI</span> <img src="https://cdn-icons-png.flaticon.com/128/1384/1384060.png" height="28" alt="YouTube Icon" /></div>
 
 <div align="center">
 Простой и удобный десктопный интерфейс для управления обходом блокировок
@@ -8,6 +8,16 @@
 Альтернатива: [bol-van/zapret-win-bundle](https://github.com/bol-van/zapret-win-bundle) и [Flowseal/zapret-discord-youtube](https://github.com/Flowseal/zapret-discord-youtube)
 </div>
 
+---
+<div align="center">
+  <img src="https://lh3.google.com/u/1/d/1yUQQcHsNBCVR49xPRikreNJEMM_qBX0_=w1920-h919-iv1?auditContext=forDisplay" height="28" alt="Тёмная тема 1" />
+  <img src="https://lh3.google.com/u/1/d/1CJY02cnGMBzpk4e1H6dl0Wj8RfeWBdZ7=w1920-h919-iv1?auditContext=prefetch" height="28" alt="Тёмная тема 2" />
+</div>
+
+<div align="center">
+  <img src="https://lh3.google.com/u/1/d/1ajpo-1_ZQwJRXlS53oG9xnd0jn-FcQyp=w962-h919-iv1?auditContext=prefetch" height="28" alt="Светлая тема 1" />
+  <img src="https://lh3.google.com/u/1/d/1TtHLhlL123yIkgIQ-QA6xcAhoPQCAfqG=w962-h919-iv1?auditContext=prefetch" height="28" alt="Светлая тема 2" />
+</div>
 ---
 
 > [!CAUTION]

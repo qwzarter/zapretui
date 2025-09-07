@@ -16,4 +16,5 @@ contextBridge.exposeInMainWorld('electronAPI', {
     onTrayConnect: (callback) => ipcRenderer.on('tray-connect', (event, strategyId) => callback(strategyId)),
     onTrayDisconnect: (callback) => ipcRenderer.on('tray-disconnect', () => callback()),
     onGetStrategiesForTray: (callback) => ipcRenderer.on('get-strategies-for-tray', () => callback()),
+	updateShouldStartInTray: (value) => ipcRenderer.send('update-should-start-in-tray', value),
 });

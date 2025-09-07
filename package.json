@@ -25,7 +25,9 @@
       {
         "from": "./client/build",
         "to": "./",
-        "filter": ["**/*"]
+        "filter": [
+          "**/*"
+        ]
       },
       "package.json",
       "bat_scripts/**/*",
@@ -39,19 +41,19 @@
       "bat_scripts/**/*",
       "!**/node_modules/fsevents"
     ],
-	"win": {
-		"target": [
-		  {
-			"target": "nsis",
-			"arch": [
-			  "x64",
-			  "ia32"
-			]
-		  }
-		],
-		"icon": "assets/icon.ico",
-		"requestedExecutionLevel": "requireAdministrator"
-	},
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
+      "icon": "assets/icon.ico",
+      "requestedExecutionLevel": "requireAdministrator"
+    },
     "nsis": {
       "oneClick": false,
       "perMachine": true,
@@ -59,7 +61,7 @@
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
       "deleteAppDataOnUninstall": false,
-	  "runAfterFinish": true
+      "runAfterFinish": true
     },
     "nodeGypRebuild": false,
     "buildDependenciesFromSource": false,
@@ -76,6 +78,7 @@
     "electron-builder": "^26.0.12"
   },
   "dependencies": {
+    "electron-store": "^10.1.0",
     "react-scripts": "^5.0.1"
   },
   "optionalDependencies": {

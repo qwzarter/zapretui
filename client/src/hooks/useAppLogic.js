@@ -22,6 +22,17 @@ const useAppLogic = () => {
 	];
 
 	// 2. Состояния
+	const [shouldStartInTray, setShouldStartInTray] = useState(() => {
+		try {
+			const savedSetting = localStorage.getItem('shouldStartInTray');
+			if (savedSetting !== null) {
+				return JSON.parse(savedSetting);
+			}
+		} catch (error) {
+			console.error("Failed to load 'shouldStartInTray' setting from localStorage", error);
+		}
+		return true;
+	});
 	const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -67,7 +78,7 @@ const useAppLogic = () => {
 		} catch (error) {
 			console.error("Failed to load auto-connect setting from localStorage", error);
 		}
-		return false;
+		return true; 
 	});
 	
 	const [isRunAtStartupEnabled, setIsRunAtStartupEnabled] = useState(false);
@@ -91,6 +102,14 @@ const useAppLogic = () => {
 	const currentStrategyName = strategies.find(s => s.id === selectedStrategy)?.name || 'Выбрать стратегию';
 
 	// 5. Функции-Обработчики
+	
+	const handleToggleStartInTray = useCallback(() => {
+		setShouldStartInTray(prev => !prev);
+	}, []);
+	
+	const handleAutoConnectToggle = useCallback(() => {
+		setIsAutoConnectEnabled(prev => !prev);
+	}, []);
 	
 	const handleShowErrorModal = useCallback((title, detail) => {
 		setModalMessage(title);
@@ -182,8 +201,7 @@ const useAppLogic = () => {
 					} catch (error) {
 						handleShowErrorModal('Критическая ошибка.', `Ошибка: ${error.message}`);
 					} finally {
-						setIsLoading(false);
-						fetchConnectionStatus();
+						await fetchConnectionStatus();
 					}
 				});
 				setIsLoading(false);
@@ -203,8 +221,7 @@ const useAppLogic = () => {
 		} catch (error) {
 			handleShowErrorModal('Общая ошибка в handleConnect:', `Ошибка: ${error.message}`);
 		} finally {
-			setIsLoading(false);
-			fetchConnectionStatus();
+			await fetchConnectionStatus();
 		}
 	}, [isLoading, selectedStrategy, fetchConnectionStatus, handleShowErrorModal]);
 
@@ -224,7 +241,6 @@ const useAppLogic = () => {
 			if (!isRunning) {
 				console.log('Zapret уже отключен.');
 				await fetchConnectionStatus();
-				setIsLoading(false);
 				return;
 			}
 			console.log('[App]: Zapret запущен, пытаемся его отключить.');
@@ -240,7 +256,6 @@ const useAppLogic = () => {
 		} catch (error) {
 			handleShowErrorModal('Ошибка отключения:', `Ошибка: ${error.message}`);
 		} finally {
-			setIsLoading(false);
 			await fetchConnectionStatus();
 		}
 	}, [isLoading, fetchConnectionStatus, handleShowErrorModal]);
@@ -344,17 +359,31 @@ const useAppLogic = () => {
 // Эффекты
 	
 	useEffect(() => {
+		try {
+			localStorage.setItem('shouldStartInTray', JSON.stringify(shouldStartInTray));
+		} catch (error) {
+			console.error("Failed to save 'shouldStartInTray' setting to localStorage", error);
+		}
+	}, [shouldStartInTray]);
+	
+	useEffect(() => {
+		if (isConnected !== null) {
+			setIsLoading(false);
+		}
+	}, [isConnected]);
+	
+	useEffect(() => {
 		if (hasRunOnce.current) {
 			return;
 		}
 
 		const checkInitialStatusAndConnect = async () => {
 			console.log('[App]: Выполнение начальной проверки статуса...');
-			await fetchConnectionStatus();
+			fetchConnectionStatus();
 			
-			if (isAutoConnectEnabled && isInitialLoad && isGameFilterEnabled !== null) {
+			if (isAutoConnectEnabled && isInitialLoad) {
 				console.log('[App]: Автоматическое подключение при запуске...');
-				handleConnect();
+				await handleConnect();
 				setIsInitialLoad(false);
 			}
 
@@ -362,7 +391,7 @@ const useAppLogic = () => {
 		};
 
 		checkInitialStatusAndConnect();
-	}, [isAutoConnectEnabled, isGameFilterEnabled, handleConnect, fetchConnectionStatus, isInitialLoad]);
+	}, [isAutoConnectEnabled, handleConnect, fetchConnectionStatus, isInitialLoad]);
 
 	useEffect(() => {
 		const intervalId = setInterval(fetchConnectionStatus, 15000);
@@ -474,12 +503,15 @@ const useAppLogic = () => {
 		currentStrategyName,
 		isDarkMode,
 		isAutoConnectEnabled,
+		handleAutoConnectToggle,
 		isRunAtStartupEnabled,
+		shouldStartInTray,
 		runInTray,
 		handleConnect,
 		handleDisconnect,
 		handleToggleRunAtStartup,
 		handleToggleRunInTray,
+		handleToggleStartInTray,
 		toggleDarkMode,
 		openSettingsMenu,
 		closeSettingsMenu,

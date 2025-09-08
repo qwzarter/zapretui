@@ -89,7 +89,7 @@ Zapret UI — это десктопное приложение на базе **E
 
 ### ⚖️ Лицензирование
 
-Проект распространяется на условиях лицензии [MIT](LICENSE://github.com/qwzarter/zapretui/blob/master/LICENSE.
+Проект распространяется на условиях лицензии [MIT](https://github.com/qwzarter/zapretui/blob/master/LICENSE.
 
 ---
 
